@@ -25,6 +25,19 @@ class UpdatePage extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'title' => 'required|max:255',
+            'url' => 'required|max:255',
+            'htmlpage' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Пустое значение "Название"',
+            'title.required'  => 'Пустое значение "Заголовок"',
+            'url.required'  => 'Пустое значение "Адресс URL"',
+            'htmlpage.required'  => 'Пустое значение "Текст страницы"',
         ];
     }
 

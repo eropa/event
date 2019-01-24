@@ -22,11 +22,28 @@ class PageService{
         $model->save();
     }
 
-    public function update(UpdatePage $request,Page $page){
-        //dump($request->validated());
-
+    /**
+     * @param Page $page
+     * @param UpdatePage $request
+     */
+    public function update(Page $page,UpdatePage $request){
+        // обновляем значние
         $page->name=$request->input('name');
+        $page->title=$request->input('title');
+        $page->url=$request->input('url');
+        $page->htmlpage=$request->input('htmlpage');
+        // сохроняем значение
         $page->save();
-
     }
+
+    /**
+     *
+     * @param Page $page
+     * @throws \Exception
+     */
+    public function destroy(Page $page){
+        //удоляем
+        $page->delete();
+    }
+
 }

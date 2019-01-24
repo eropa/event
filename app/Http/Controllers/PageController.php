@@ -78,9 +78,9 @@ class PageController extends Controller
     public function update(UpdatePage $request, Page $page,PageService $pageservice)
     {
         // обновляем запись
-        $pageservice->update($request,$page);
+        $pageservice->update($page,$request);
         //переходим
-        return redirect('admin/pages')->with('status', 'Вы создали страницу!');
+        return redirect('admin/pages')->with('status', 'Вы обновили страницу!');
     }
 
     /**
@@ -89,8 +89,11 @@ class PageController extends Controller
      * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy(Page $page,PageService $pageservice)
     {
-        //
+        // удоляем
+        $pageservice->destroy($page);
+        //переходим
+        return redirect('admin/pages')->with('status', 'Вы удалили страницу');
     }
 }

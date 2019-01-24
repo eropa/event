@@ -29,12 +29,16 @@
                                 @foreach($datas as $data)
                                     <tr>
                                         <th scope="row">{{ $data->id }}</th>
-                                        <td>{{ $data->name }}</td>
+                                        <td> <a href="{{ url('admin/pages/'.$data->id.'/edit') }}">
+                                            {{ $data->name }} </a></td>
                                         <td>{{ $data->url }}</td>
                                         <td>
-                                            <a href="{{ url('admin/pages/'.$data->id.'/edit') }}">
-                                                Редактировать
-                                            </a>
+                                            <form action=" {{ url('admin/pages/'.$data->id) }} " method="post">
+                                                <button type="submit" class="btn btn-primary">Удалить</button>
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+
                                         </td>
                                     </tr>
                                 @endforeach
