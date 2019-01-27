@@ -21,6 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::resource('pages', 'PageController');
+        Route::resource('pages', 'PageController')->middleware('role:admin');
     });
 });
